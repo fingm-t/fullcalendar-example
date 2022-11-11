@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href='main.css' rel='stylesheet' />
+    <script src='main.js'></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                editable: true,
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,listWeek'
+                },
+                dateClick: function() {
+                    console.log('a day has been clicked!');
+                },
+                views: {
+                    dayGridMonth: { // name of view
+                        titleFormat: { year: 'numeric', month: '2-digit', day: '2-digit' }
+                        // other view-specific options here
+                    }
+                },
+                events: [
+                    { // this object will be "parsed" into an Event Object
+                        title: 'Party Big 2! :D', // a property!
+                        start: '2022-11-17', // a property!
+                        end: '2022-11-20', // a property! ** see important note below about 'end' **
+                        color: 'transparent' //color
+                    },
+                    { // this object will be "parsed" into an Event Object
+                        title: 'Party Big! :D', // a property!
+                        start: '2022-11-18', // a property!
+                        end: '2022-11-21', // a property! ** see important note below about 'end' **
+                        color: 'transparent' //color
+                    }
+                ]
+            });
+
+            calendar.render();
+        });
+    </script>
+    <title>Title</title>
+</head>
+<body>
+    <div id='calendar'></div>
+</body>
+</html>
+
+<style>
+.fc .fc-col-header-cell-cushion {
+    background: rgba(173,168,255,0.5);
+    color: white;
+    width: 100%;
+}
+
+.fc-h-event .fc-event-title-container {
+    color: white;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.fc .fc-daygrid-event {
+    backgroundColor: transparent;
+    z-index: 6;
+    margin-top: 1px;
+    border: none;
+
+}
+
+.fc{
+    font-family: Helvetica;
+    background: rgb(173,168,255);
+    background: linear-gradient(270deg, rgba(173,168,255,0.5704656862745099) 0%, rgba(156,255,241,0.41360294117647056) 35%, rgba(247,157,252,0.4556197478991597) 66%, rgba(195,166,255,0.5060399159663865) 100%);
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+    background-color: rgba(150, 300, 90, 0.15);
+}
+
+.fc .fc-toolbar.fc-header-toolbar {
+    color: white;
+    text-shadow: 0 0 #1a252f;
+}
+</style>
